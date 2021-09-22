@@ -81,7 +81,7 @@ if (isset($_SESSION['userID'])) {
                  <button type="submit"> <i class="fas fa-search" aria-hidden="true"></i></button>
                 </form>
               </li>
-              <li class="nav-item"><a href="cart.php"><button><i class="ti-shopping-cart"></i><span id="cartCount" class="nav-shop__circle"></span></button></a> </li>
+              <li class="nav-item"><a href="cart.php"><button><i class="fas fa-shopping-cart"></i><span id="cartCount" class="nav-shop__circle"></span></button></a> </li>
 
               <?php
               if (isset($_SESSION['userID'])) {
