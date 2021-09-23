@@ -189,8 +189,82 @@ $product_id = $_GET['prd'];
 </script>
 
 
+<style>
+.card {
+    margin: auto;
+    padding: 20px;
+    border-radius: 15px;
 
+}
 
+fieldset.active {
+    display: block !important
+}
+
+fieldset {
+    display: none
+}
+
+.pic0 {
+    width: 450px;
+    height: 500px;
+
+    object-fit: cover;
+    margin-left: 85px;
+    margin-right: auto;
+    display: block
+}
+
+.product-pic {
+    padding-left: auto;
+    padding-right: auto;
+    width: 100%
+}
+
+.thumbnails {
+    position: absolute
+}
+
+.fit-image {
+    width: 100%;
+    object-fit: cover
+}
+
+.tb {
+    width: 62px;
+    height: 62px;
+    border: 1px solid grey;
+    margin: 2px;
+    opacity: 0.4;
+    cursor: pointer
+}
+
+.tb-active {
+    opacity: 1
+}
+
+.thumbnail-img {
+    width: 60px;
+    height: 60px
+}
+
+@media screen and (max-width: 768px) {
+	.card {
+		width: 100%;
+    margin: auto;
+    padding: 10px;
+    border-radius: 10px;
+
+}
+    .pic0 {
+      width: 325px;
+        height: 350px;
+		margin-left: 0px;
+		background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+    }
+}</style>
 
 
 <!-- ================ start banner area ================= -->
@@ -228,20 +302,60 @@ while ($row = mysqli_fetch_assoc($query)) {
 		<div class="container">
 			<div class="row s_product_inner">
 				<div class="col-lg-6">
-					<div class="owl-carousel owl-theme s_Product_carousel">
-						<?php
+					<!-- <div class="owl-carousel owl-theme s_Product_carousel">
+						
+					</div> -->
+					<div class="container-fluid  mx-auto">
+    <div class="row justify-content-center">
+        <div class="d-flex">
+            <div class="card">
+                <div class="d-flex flex-column thumbnails">
+				<?php
 						$i = 0;
 						for ($i = 0; $i < sizeof($images); $i++) {
 						?>
-							<div class="single-prd-item">
-								<img class="img-fluid" src="img/product/<?php echo $images[$i] ?>" alt="<?php echo $images[$i] ?>">
-							</div>
+						
+								
+								<div id="f<?= $i+1;?>" class="tb <?= $i==0?'tb-active':'' ?>"> <img class="thumbnail-img fit-image" src="img/product/<?php echo $images[$i] ?>" alt="<?php echo $images[$i] ?>"> </div>
+						
 						<?php
 						}
 
 
 						?>
-					</div>
+                    
+                    <!-- <div id="f2" class="tb"> <img class="thumbnail-img fit-image" src="https://i.imgur.com/3NusNP2.jpg"> </div>
+                    <div id="f3" class="tb"> <img class="thumbnail-img fit-image" src="https://i.imgur.com/pXUPOVR.jpg"> </div>
+                    <div id="f4" class="tb"> <img class="thumbnail-img fit-image" src="https://i.imgur.com/xX5Qmsa.jpg"> </div> -->
+                </div>
+				<?php
+						$i = 0;
+						for ($i = 0; $i < sizeof($images); $i++) {
+						?>
+							<fieldset id="f<?= $i+1;?>1" class="<?= $i==0?'active':'' ?>">
+                    <div class="product-pic"> <img class="pic0 " src="img/product/<?php echo $images[$i] ?>"> </div>
+                </fieldset>
+						<?php
+						}
+
+
+						?>
+                <!-- <fieldset id="f11" class="active">
+                    <div class="product-pic"> <img class="pic0" src="https://i.imgur.com/wL1uRBk.jpg"> </div>
+                </fieldset>
+                <fieldset id="f21" class="">
+                    <div class="product-pic"> <img class="pic0" src="https://i.imgur.com/3NusNP2.jpg"> </div>
+                </fieldset>
+                <fieldset id="f31" class="">
+                    <div class="product-pic"> <img class="pic0" src="https://i.imgur.com/pXUPOVR.jpg"> </div>
+                </fieldset>
+                <fieldset id="f41" class="">
+                    <div class="product-pic"> <img class="pic0" src="https://i.imgur.com/xX5Qmsa.jpg"> </div>
+                </fieldset> -->
+            </div>
+        </div>
+    </div>
+</div>
 				</div>
 				<div class="col-lg-5 offset-lg-1">
 					<div class="s_product_text">
@@ -318,8 +432,8 @@ while ($row = mysqli_fetch_assoc($query)) {
 
 			<div class="tab-pane fade show active" id="review" role="tabpanel" aria-labelledby="review-tab">
 				<div class="row">
-					<div class="col-lg-6" id="commentView"></div>
-					<div class="col-lg-6">
+					<div class="col-lg-6 col-sm-12" id="commentView"></div>
+					<div class="col-lg-6 col-sm-12">
 						<div class="review_box">
 							<h4>Add a Review</h4>
 							<p>Your Rating:</p>
@@ -365,6 +479,35 @@ while ($row = mysqli_fetch_assoc($query)) {
 		</div>
 	</div>
 </section>
+<script type='text/javascript'>$(document).ready(function(){
+
+$(".tb").hover(function(){
+
+$(".tb").removeClass("tb-active");
+$(this).addClass("tb-active");
+
+current_fs = $(".active");
+
+next_fs = $(this).attr('id');
+next_fs = "#" + next_fs + "1";
+
+$("fieldset").removeClass("active");
+$(next_fs).addClass("active");
+
+current_fs.animate({}, {
+step: function() {
+current_fs.css({
+'display': 'none',
+'position': 'relative'
+});
+next_fs.css({
+'display': 'block'
+});
+}
+});
+});
+
+});</script>
 <!--================End Product Description Area =================-->
 
 <!-- ================ Start related Product area =================   -->

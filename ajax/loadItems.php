@@ -74,29 +74,31 @@
       ?>
         
         <div class="col-4 col-sm-6 col-md-6 col-lg-3">
+        <a href="single-product.php?prd=<?php echo $row['pId']?>">
           <div >
                 <div class="card text-center card-product  zoom" >
                   <a href="single-product.php?prd=<?php echo $row['pId']?>">
                   <div class="card-product__img card-img square" style="background-image:url('img/product/<?php echo $image[0]?>')">
   
-                  
+                  </div>
                    
                     </a>
-                    <ul class="card-product__imgOverlay">
+                    <!-- <ul class="card-product__imgOverlay">
                       <li><button ><i class="ti-search"></i></button></li>
                       <li><button><i class="ti-shopping-cart"></i></button></li>
                       <li><button><i class="ti-heart"></i></button></li>
-                    </ul>
-                  </div>
+                    </ul> -->
+                  
                   
                   <div class="card-body p-0 m-0">
-                  <a href="single-product.php?prd=<?php echo $row['pId']?>">
+                  
                     <h4 class="card-product__title p-0 m-0"><a href="single-product.php?prd=<?php echo $row['pId']?>" ><?php echo $row['pname']?></a></h4>
-                    <p class="card-product__price p-0 m-0">Rs.<?php echo $row['price']?></p></a>
+                    <p class="card-product__price p-0 m-0">Rs.<?php echo $row['price']?></p>
                   </div>
-                </div>
+                  </div>
+                </div></a>
           </div>
-        </div>
+     
     
             
  <?php   } ?>

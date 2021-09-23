@@ -94,7 +94,12 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
  
   <script src="vendors/bootstrap/bootstrap.bundle.min.js"></script>
-  <script src="vendors/skrollr.min.js"></script>
+  <!-- <script src="vendors/skrollr.min.js"></script> -->
+  <!-- <script type="text/javascript">
+	 skrollr.init({
+        forceHeight: true
+    });
+	</script> -->
   <script src="vendors/owl-carousel/owl.carousel.min.js"></script>
   <script src="vendors/nice-select/jquery.nice-select.min.js"></script>
   <script src="vendors/jquery.ajaxchimp.min.js"></script>

@@ -6,18 +6,19 @@ $_SESSION['role'] = "Admin" ?>
 // Start the session
 session_start();
 ?>
-<?php include 'includes/header.php' ;
-if(isset($_POST['searchBox'])){
-  $searchVal=$_POST['searchBox'];
-}else{
-  $searchVal="";
+<?php include 'includes/header.php';
+if (isset($_POST['searchBox'])) {
+  $searchVal = $_POST['searchBox'];
+} else {
+  $searchVal = "";
 }
 ?>
 
 <script>
   $(document).ready(function() {
+
     var selectedVal = $('.cat:checked').val();
-    var searchVal="<?=$searchVal ?>";
+    var searchVal = "<?= $searchVal ?>";
     var page = 1;
     var firstRes = (page - 1) * 12;
     var numPage = 12;
@@ -181,7 +182,7 @@ if(isset($_POST['searchBox'])){
                     $row = mysqli_fetch_assoc($data);
                     $count = $row['cnt'];
                   ?>
-                    <li class="filter-list"><input class="pixel-radio cat" type="radio" name="brand" value="<?= $cat_id ?>"><label for="<?= $cat_name ?>"><?= $cat_name ?><span> (<?= $count ?>)</span></label></li>
+                    <li class="filter-list"><input class="pixel-radio cat" id="cat_<?= $cat_name ?>" type="radio" name="brand" value="<?= $cat_id ?>"><label for="<?= $cat_name ?>"><?= $cat_name ?><span> (<?= $count ?>)</span></label></li>
                   <?php } ?>
                 </ul>
               </form>
@@ -372,6 +373,30 @@ if(isset($_POST['searchBox'])){
   </div>
 </section>
 <!-- ================ Subscribe section end ================= -->
-
+<script>
+  $(document).ready(function() {
+    $(document).on("click", "input[type='radio']", function(e) {
+      var checked = $(this).attr("checked");
+      if (!checked) {
+        $(this).attr("checked", true);
+      } else {
+        $(this).removeAttr("checked");
+        $(this).prop("checked", false);
+        var selectedVal = $('.cat:checked').val();
+        var searchVal = "<?= $searchVal ?>";
+        var page = 1;
+        var firstRes = (page - 1) * 12;
+        var numPage = 12;
+        $('#selling_cat').load("ajax/loadItems.php", {
+          sVal: selectedVal,
+          fRes: firstRes,
+          nPerPage: numPage,
+          cPage: page,
+          searVal: searchVal
+        });
+      }
+    });
+  });
+</script>
 
 <?php include 'includes/footer.php' ?>

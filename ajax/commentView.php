@@ -151,16 +151,16 @@ $average = (1 * $one + 2 * $two + 3 * $three + 4 * $four + 5 * $five) / ($count)
 
     ?>
     <div class="row total_rate">
-        <div class="col-6">
+        <div class="col-md-6 col-sm-12">
             <div class="box_total">
                 <h5>Overall</h5>
                 <h4><?= $average ?></h4>
                 <h6>(<?= $count ?> Reviews)</h6>
             </div>
         </div>
-        <div class="col-6">
+        <div class="col-md-6 col-sm-12 d-flex justify-content-center">
             <div class="rating_list">
-                <h3>Based on <?= $count ?> Reviews</h3>
+                <h3 class="text-center">Based on <?= $count ?> Reviews</h3>
                 <ul class="list">
                     <li><a href="#">5 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><?= $five ?></a></li>
                     <li><a href="#">4 Star <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><?= $four ?></a></li>
