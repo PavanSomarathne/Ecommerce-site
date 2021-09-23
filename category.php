@@ -177,7 +177,7 @@ if (isset($_POST['searchBox'])) {
                   while ($row = mysqli_fetch_assoc($run)) {
                     $cat_id = $row['id'];
                     $cat_name = $row['name'];
-                    $sql = "SELECT COUNT(*) as cnt FROM product where category= $cat_id";
+                    $sql = "SELECT COUNT(*) as cnt FROM product where category= $cat_id and status='Publish'";
                     $data = mysqli_query($con, $sql);
                     $row = mysqli_fetch_assoc($data);
                     $count = $row['cnt'];

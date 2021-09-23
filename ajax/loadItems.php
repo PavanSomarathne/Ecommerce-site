@@ -35,31 +35,31 @@
         if(isset($_POST['sortVal'])){
           $sortingVal=$_POST['sortVal'];
           if($sortingVal=="2"){
-            $sql="SELECT * FROM product WHERE category=$cat $que  ORDER BY price ASC LIMIT $first_item , $iems_per_page ";
+            $sql="SELECT * FROM product WHERE category=$cat AND status='Publish' $que  ORDER BY price ASC LIMIT $first_item , $iems_per_page ";
           }else if($sortingVal=="3"){
-            $sql="SELECT * FROM product WHERE category=$cat $que ORDER BY price DESC LIMIT $first_item , $iems_per_page ";
+            $sql="SELECT * FROM product WHERE category=$cat AND status='Publish' $que ORDER BY price DESC LIMIT $first_item , $iems_per_page ";
           }else{
-            $sql="SELECT * FROM product WHERE category=$cat $que LIMIT $first_item , $iems_per_page";
+            $sql="SELECT * FROM product WHERE category=$cat AND status='Publish' $que LIMIT $first_item , $iems_per_page";
           }
         }else{
-          $sql="SELECT * FROM product WHERE category=$cat $que LIMIT $first_item , $iems_per_page";
+          $sql="SELECT * FROM product WHERE category=$cat AND status='Publish' $que LIMIT $first_item , $iems_per_page";
         }
       }else{
         if(isset($_POST['searVal'])){ 
           $searchData=$_POST['searVal'];
-          $que="WHERE pname like '%$searchData%' ";
+          $que="AND pname like '%$searchData%' ";
         }
         if(isset($_POST['sortVal'])){
           $sortingVal=$_POST['sortVal'];
           if($sortingVal=="2"){
-            $sql="SELECT * FROM product $que ORDER BY price ASC LIMIT $first_item , $iems_per_page ";
+            $sql="SELECT * FROM product WHERE status='Publish' $que ORDER BY price ASC LIMIT $first_item , $iems_per_page ";
           }else if($sortingVal=="3"){
-            $sql="SELECT * FROM product $que ORDER BY price DESC LIMIT $first_item , $iems_per_page ";
+            $sql="SELECT * FROM product WHERE status='Publish' $que ORDER BY price DESC LIMIT $first_item , $iems_per_page ";
           }else{
-            $sql="SELECT * FROM product $que LIMIT $first_item , $iems_per_page";
+            $sql="SELECT * FROM product WHERE status='Publish' $que LIMIT $first_item , $iems_per_page";
           }
         }else{
-          $sql="SELECT * FROM product $que LIMIT $first_item , $iems_per_page";
+          $sql="SELECT * FROM product WHERE status='Publish' $que LIMIT $first_item , $iems_per_page";
           
         }
       }
