@@ -11,7 +11,7 @@ if (isset($_POST['updateId'])) {
     $qty = $_POST['qty'];
     $price = $_POST['price'];
     $tot = $price * $qty;
-    $sql = "UPDATE cartorders set qty=$qty,total=$tot  WHERE id=$id";
+    $sql = "UPDATE cartorders set qty=$qty,total=$tot  WHERE cartId=$id";
     $run = mysqli_query($con, $sql);
 }
 
@@ -113,12 +113,16 @@ if ($count > 0) {
 
                                             $('#up<?php echo $cId ?>').click(function() {
                                                 var qty = $('#sst<?php echo $cId ?>').val();
+                                                
                                                 var price = $('#price<?php echo $cId ?>').val();
+                                                
                                                 var uId = <?php echo $cId ?>;
+                                                
                                                 if (qty > 0) {
                                                     qty++;
                                                     $('#sst<?php echo $cId ?>').val(qty);
                                                 }
+                                               
                                                 $('#cartTable').load("ajax/updateCart.php", {
                                                     updateId: uId,
                                                     qty: qty,
@@ -495,6 +499,7 @@ if ($count > 0) {
             </div>
         </div> -->
     </section>
+    
 <?php
 
 } else {
